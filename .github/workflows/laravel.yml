@@ -1,0 +1,41 @@
+@"
+name: Laravel CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+    
+    - name: Install dependencies
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
+    
+    - name: Copy .env
+      run: cp .env.example .env
+    
+    - name: Generate key
+      run: php artisan key:generate
+    
+    - name: Set permissions
+      run: chmod -R 777 storage bootstrap/cache
+    
+    - name: PHP Syntax Check
+      run: |
+        find . -name "*.php" -not -path "./vendor/*" -exec php -l {} \;
+    
+    - name: Run migrations
+      run: php artisan migrate --force
+"@ | Out-File -FilePath .github/workflows/laravel.yml -Encoding UTF8

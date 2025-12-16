@@ -1,59 +1,213 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🎫 ServiceDesk - Ticketing System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"> <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"> </p><p align="center"> <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat&logo=laravel" alt="Laravel Version"> <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat&logo=php" alt="PHP Version"> <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql" alt="MySQL Version"> <img src="https://img.shields.io/badge/Docker-Sail-2496ED?style=flat&logo=docker" alt="Docker"> <img src="https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=flat&logo=tailwind-css" alt="Tailwind CSS"> </p>
+📋 О проекте
+ServiceDesk — это система управления заявками (тикет-система) для технической поддержки, разработанная на Laravel 12 с использованием Docker Sail. Проект создан в рамках тестового задания для проверки навыков работы с современным стеком веб-разработки.
 
-## About Laravel
+✅ Выполненные требования задания
+Docker + Laravel Sail — полное окружение в контейнерах
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Аутентификация и регистрация — Laravel Breeze с Blade
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+CRUD заявок — создание, просмотр, редактирование, удаление
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Админ-панель — управление всеми заявками, смена статусов
 
-## Learning Laravel
+Ролевая модель — пользователь (user) и администратор (admin)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+UI/UX с Tailwind CSS — адаптивный и современный интерфейс
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+База данных — миграции, сидеры с тестовыми пользователями
 
-## Laravel Sponsors
+CI/CD — GitHub Actions workflow для автоматического тестирования
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+GitHub репозиторий — полная история коммитов
 
-### Premium Partners
+✨ Основные возможности
+👤 Для пользователей
+🔐 Регистрация и авторизация
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+📝 Создание новых заявок с выбором категории, приоритета и срока исполнения
 
-## Contributing
+📋 Просмотр списка своих заявок
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+🔍 Детальный просмотр каждой заявки
 
-## Code of Conduct
+✏️ Редактирование и удаление своих заявок
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+📊 Dashboard с навигацией и статистикой
 
-## Security Vulnerabilities
+👑 Для администраторов
+👁️ Просмотр всех заявок в системе
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+⚡ Быстрая смена статуса заявки (новая, в работе, выполнена, отклонена)
 
-## License
+👥 Назначение заявок на исполнителей
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📈 Полный контроль над всеми пользовательскими заявками
+
+🚀 Быстрый старт
+Требования
+Docker & Docker Compose (рекомендуется)
+
+PHP 8.2+ (если без Docker)
+
+Composer
+
+Node.js 18+ & npm
+
+Установка через Docker (рекомендуется)
+Клонируйте репозиторий
+
+bash
+git clone https://github.com/ваш-username/servicedesk.git
+cd servicedesk
+Запустите Docker контейнеры
+
+bash
+./vendor/bin/sail up -d
+Установите зависимости
+
+bash
+./vendor/bin/sail composer install
+./vendor/bin/sail npm install
+./vendor/bin/sail npm run build
+Настройте окружение
+
+bash
+cp .env.example .env
+./vendor/bin/sail artisan key:generate
+Запустите миграции и сидеры
+
+bash
+./vendor/bin/sail artisan migrate --seed
+Откройте в браузере
+
+text
+http://localhost
+Установка без Docker
+Настройте окружение
+
+bash
+git clone https://github.com/ваш-username/servicedesk.git
+cd servicedesk
+composer install
+npm install
+npm run build
+cp .env.example .env
+php artisan key:generate
+Настройте базу данных в .env
+
+env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=servicedesk
+DB_USERNAME=root
+DB_PASSWORD=
+Запустите миграции и сидеры
+
+bash
+php artisan migrate --seed
+php artisan serve
+👥 Тестовые пользователи
+После запуска сидеров создаются три тестовых пользователя:
+
+Email Пароль Роль Описание
+admin@example.com password Admin Полный доступ ко всем функциям, включая админ-панель
+user@example.com password User Может создавать и просматривать только свои заявки
+test@example.com password User Обычный пользователь для тестирования
+📁 Структура проекта
+text
+servicedesk/
+├── app/
+│ ├── Http/Controllers/
+│ │ ├── TicketController.php # CRUD операции для заявок
+│ │ └── AdminController.php # Управление заявками для админов
+│ ├── Models/
+│ │ ├── User.php # Модель пользователя с ролью
+│ │ └── Ticket.php # Модель заявки
+│ └── Http/Middleware/ # Middleware для проверки прав
+├── database/
+│ ├── migrations/ # Миграции для users и tickets
+│ └── seeders/ # Сидеры с тестовыми данными
+├── resources/views/
+│ ├── tickets/ # Шаблоны для работы с заявками
+│ ├── admin/ # Шаблоны админ-панели
+│ ├── auth/ # Шаблоны аутентификации
+│ └── layouts/ # Основные layout'ы
+├── routes/
+│ └── web.php # Все маршруты приложения
+└── docker/ # Docker конфигурация Sail
+🔧 Технологический стек
+Backend: Laravel 12, PHP 8.2
+
+Frontend: Blade, Tailwind CSS 3, Alpine.js
+
+База данных: MySQL 8.0
+
+Контейнеризация: Docker + Laravel Sail
+
+Аутентификация: Laravel Breeze
+
+Стилизация: Tailwind CSS
+
+CI/CD: GitHub Actions
+
+Управление версиями: Git
+
+🧪 Тестирование и CI/CD
+Проект включает базовый CI/CD pipeline через GitHub Actions, который автоматически:
+
+✅ Проверяет синтаксис PHP
+
+✅ Устанавливает зависимости
+
+✅ Запускает миграции
+
+✅ Проверяет сборку frontend
+
+Статус сборки: https://github.com/%D0%B2%D0%B0%D1%88-username/servicedesk/actions/workflows/laravel.yml/badge.svg
+
+📸 Скриншоты
+
+1. Dashboard с навигацией
+   https://screenshots/dashboard.png
+   Панель управления с карточками навигации и статистикой
+
+2. Создание заявки
+   https://screenshots/create-ticket.png
+   Форма создания новой заявки с выбором категории и приоритета
+
+3. Список заявок пользователя
+   https://screenshots/my-tickets.png
+   Список заявок текущего пользователя с цветовыми индикаторами статусов
+
+4. Админ-панель
+   https://screenshots/admin-panel.png
+   Панель администратора со всеми заявками и возможностью смены статусов
+
+🚧 Развертывание
+Production окружение
+Для продакшн-развертывания рекомендуется:
+
+Настроить правильные переменные окружения в .env
+
+Использовать APP_ENV=production
+
+Настроить настоящий SMTP сервер для отправки почты
+
+Использовать php artisan config:cache и php artisan route:cache
+
+Настроить Nginx/Apache для обслуживания статических файлов
+
+Docker Production
+bash
+
+# Сборка production образа
+
+docker build -t servicedesk:latest .
+
+# Запуск
+
+docker run -d -p 80:80 --env-file .env servicedesk:latest
