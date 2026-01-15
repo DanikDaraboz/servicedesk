@@ -24,13 +24,13 @@ jobs:
       - name: Copy .env
         run: cp .env.example .env
 
-      - name: Generate application key
-        run: php artisan key:generate
-
       - name: Install dependencies
         run: |
           composer install --no-interaction --prefer-dist --optimize-autoloader --no-scripts
           npm ci
+
+      - name: Generate application key
+        run: php artisan key:generate
 
       - name: Build assets
         run: npm run build
