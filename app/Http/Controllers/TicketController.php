@@ -13,7 +13,12 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::where('user_id', Auth::id())->get();
+        // ИСПРАВЛЕНО: админ видит все заявки, обычный пользователь - только свои
+        if (Auth::user()->role === 'admin') {
+            $tickets = Ticket::with('user')->latest()->get();
+        } else {
+            $tickets = Ticket::where('user_id', Auth::id())->get();
+        }
         return view('tickets.index', compact('tickets'));
     }
 
@@ -56,7 +61,8 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        if ($ticket->user_id !== Auth::id()) {
+        // ИСПРАВЛЕНО: админ может смотреть любую заявку
+        if (Auth::user()->role !== 'admin' && $ticket->user_id !== Auth::id()) {
             abort(403, 'У вас нет доступа к этой заявке.');
         }
 
@@ -68,7 +74,8 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        if ($ticket->user_id !== Auth::id()) {
+        // ИСПРАВЛЕНО: админ может редактировать любую заявку
+        if (Auth::user()->role !== 'admin' && $ticket->user_id !== Auth::id()) {
             abort(403, 'У вас нет доступа к этой заявке.');
         }
 
@@ -80,7 +87,8 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        if ($ticket->user_id !== Auth::id()) {
+        // ИСПРАВЛЕНО: админ может обновлять любую заявку
+        if (Auth::user()->role !== 'admin' && $ticket->user_id !== Auth::id()) {
             abort(403, 'У вас нет доступа к этой заявке.');
         }
 
@@ -102,7 +110,8 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        if ($ticket->user_id !== Auth::id()) {
+        // ИСПРАВЛЕНО: админ может удалять любую заявку
+        if (Auth::user()->role !== 'admin' && $ticket->user_id !== Auth::id()) {
             abort(403, 'У вас нет доступа к этой заявке.');
         }
 

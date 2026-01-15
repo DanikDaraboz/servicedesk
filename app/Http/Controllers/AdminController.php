@@ -22,17 +22,59 @@ class AdminController extends Controller
     /**
      * Display admin dashboard.
      */
-    public function index()
+    public function index(Request $request)
     {
         $this->checkAdmin();
         
-        $tickets = Ticket::with('user')->latest()->paginate(10);
+        // Начинаем запрос
+        $query = Ticket::with('user');
+        
+        // Поиск по названию или описанию
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+        
+        // Фильтрация по статусу
+        if ($request->has('status') && $request->status && $request->status !== 'all') {
+            $query->where('status', $request->status);
+        }
+        
+        // Фильтрация по приоритету
+        if ($request->has('priority') && $request->priority && $request->priority !== 'all') {
+            $query->where('priority', $request->priority);
+        }
+        
+        // Фильтрация по категории
+        if ($request->has('category') && $request->category && $request->category !== 'all') {
+            $query->where('category', $request->category);
+        }
+        
+        // Сортировка
+        $sort = $request->get('sort', 'created_at');
+        $order = $request->get('order', 'desc');
+        $query->orderBy($sort, $order);
+        
+        // Пагинация
+        $tickets = $query->paginate(10)->appends($request->all());
+        
+        // Статистика
         $totalTickets = Ticket::count();
         $totalUsers = User::count();
         $openTickets = Ticket::where('status', 'new')->orWhere('status', 'in_progress')->count();
         $users = User::latest()->take(5)->get();
         
-        return view('admin.index', compact('tickets', 'totalTickets', 'totalUsers', 'openTickets', 'users'));
+        return view('admin.index', compact(
+            'tickets', 
+            'totalTickets', 
+            'totalUsers', 
+            'openTickets', 
+            'users',
+            'request'
+        ));
     }
 
     /**
