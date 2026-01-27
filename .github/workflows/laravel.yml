@@ -17,7 +17,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
+          php-version: "8.3"
           extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, pdo_sqlite, gd, imagick
           coverage: none
 
@@ -28,6 +28,8 @@ jobs:
         run: |
           composer install --no-interaction --prefer-dist --optimize-autoloader --no-scripts
           npm ci
+        env:
+          COMPOSER_IGNORE_PLATFORM_REQS: 1
 
       - name: Generate application key
         run: php artisan key:generate
