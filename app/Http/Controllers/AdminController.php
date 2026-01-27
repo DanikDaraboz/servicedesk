@@ -94,7 +94,13 @@ class AdminController extends Controller
             'assigned_to' => $request->assigned_to,
         ]);
 
-        return redirect()->route('admin.index')->with('success', 'Статус заявки обновлен!');
+        $statusLabels = [
+            'new' => 'Новая',
+            'in_progress' => 'В обработке',
+            'completed' => 'Выполнена',
+            'rejected' => 'Отклонена'
+        ];
+        return redirect()->route('admin.index')->with('success', 'Статус заявки "' . $ticket->title . '" изменен на "' . ($statusLabels[$request->status] ?? $request->status) . '"!');
     }
     
     /**
@@ -104,9 +110,10 @@ class AdminController extends Controller
     {
         $this->checkAdmin();
         
+        $ticketTitle = $ticket->title;
         $ticket->delete();
         
-        return redirect()->route('admin.index')->with('success', 'Заявка успешно удалена!');
+        return redirect()->route('admin.index')->with('success', 'Заявка "' . $ticketTitle . '" успешно удалена!');
     }
     
     /**
@@ -156,8 +163,9 @@ class AdminController extends Controller
         $user->tickets()->delete();
         
         // Удаляем пользователя
+        $userName = $user->name;
         $user->delete();
         
-        return redirect()->route('admin.users.index')->with('success', 'Пользователь успешно удален!');
+        return redirect()->route('admin.users.index')->with('success', 'Пользователь "' . $userName . '" успешно удален!');
     }
 }

@@ -25,6 +25,11 @@
                     <x-nav-link :href="route('tickets.create')" :active="request()->routeIs('tickets.create')">
                         {{ __('New Ticket') }}
                     </x-nav-link>
+
+                    <!-- Ссылка на pdf signer -->
+                    <x-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.*')">
+                        {{ __('PDF Signer') }}
+                    </x-nav-link>
                     
                     <!-- Админка - только для админов -->
                     @if(auth()->user()->role === 'admin')
@@ -95,6 +100,10 @@
         
         <x-responsive-nav-link :href="route('tickets.create')" :active="request()->routeIs('tickets.create')">
             {{ __('New Ticket') }}
+        </x-responsive-nav-link>
+
+        <x-responsive-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.*')">
+            {{ __('PDF Signer') }}
         </x-responsive-nav-link>
         
         @if(auth()->user()->role === 'admin')

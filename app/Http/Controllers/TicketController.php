@@ -53,7 +53,7 @@ class TicketController extends Controller
             'status' => 'new',
         ]);
 
-        return redirect()->route('tickets.index')->with('success', 'Заявка создана успешно!');
+        return redirect()->route('tickets.index')->with('success', 'Заявка "' . $ticket->title . '" успешно создана!');
     }
 
     /**
@@ -102,7 +102,7 @@ class TicketController extends Controller
 
         $ticket->update($validated);
 
-        return redirect()->route('tickets.index')->with('success', 'Заявка обновлена успешно!');
+        return redirect()->route('tickets.index')->with('success', 'Заявка "' . $ticket->title . '" успешно обновлена!');
     }
 
     /**
@@ -115,8 +115,9 @@ class TicketController extends Controller
             abort(403, 'У вас нет доступа к этой заявке.');
         }
 
+        $ticketTitle = $ticket->title;
         $ticket->delete();
 
-        return redirect()->route('tickets.index')->with('success', 'Заявка удалена успешно!');
+        return redirect()->route('tickets.index')->with('success', 'Заявка "' . $ticketTitle . '" успешно удалена!');
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -63,4 +64,15 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
         Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
     });
+});
+
+// PDF Signer маршруты
+Route::prefix('pdf')->name('pdf.')->group(function () {
+    Route::get('/', [DocumentController::class, 'index'])->name('index');
+    Route::post('/upload', [DocumentController::class, 'upload'])->name('upload');
+    Route::get('/editor/{uuid}', [DocumentController::class, 'editor'])->name('editor');
+    Route::post('/sign/{uuid}', [DocumentController::class, 'sign'])->name('sign');
+    Route::get('/history', [DocumentController::class, 'history'])->name('history');
+    Route::get('/download/{uuid}/{type}', [DocumentController::class, 'download'])->name('download');
+    Route::delete('/history/{uuid}', [DocumentController::class, 'destroy'])->name('destroy');
 });

@@ -30,7 +30,13 @@
             <!-- Page Content -->
             <main>
                 @yield('content')
+                {{ $slot ?? '' }}
             </main>
         </div>
+
+        <!-- Notifications -->
+        <x-notification />
+        
+        @stack('scripts')
     </body>
 </html>
