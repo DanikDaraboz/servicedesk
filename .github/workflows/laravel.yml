@@ -9,6 +9,8 @@ on:
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
+    env:
+      COMPOSER_IGNORE_PLATFORM_REQS: 1
 
     steps:
       - name: Checkout code
@@ -20,6 +22,9 @@ jobs:
           php-version: "8.3"
           extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, pdo_sqlite, gd, imagick
           coverage: none
+      
+      - name: Verify PHP version
+        run: php -v
 
       - name: Copy .env
         run: cp .env.example .env
@@ -28,8 +33,6 @@ jobs:
         run: |
           composer install --no-interaction --prefer-dist --optimize-autoloader --no-scripts
           npm ci
-        env:
-          COMPOSER_IGNORE_PLATFORM_REQS: 1
 
       - name: Generate application key
         run: php artisan key:generate
