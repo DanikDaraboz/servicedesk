@@ -4,7 +4,7 @@
 @section('subheader', 'Редактирование ролей и управление доступом')
 
 @section('breadcrumbs')
-<nav class="flex" aria-label="Breadcrumb">
+<nav class="flex" aria-label="Хлебные крошки">
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
             <a href="{{ route('admin.index') }}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">

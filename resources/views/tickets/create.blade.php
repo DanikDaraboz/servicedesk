@@ -5,7 +5,7 @@
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
         <!-- Заголовок с навигацией -->
         <div class="mb-8">
-            <nav class="flex mb-4" aria-label="Breadcrumb">
+            <nav class="flex mb-4" aria-label="Хлебные крошки">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <li class="inline-flex items-center">
                         <a href="{{ route('tickets.index') }}" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-blue-600">

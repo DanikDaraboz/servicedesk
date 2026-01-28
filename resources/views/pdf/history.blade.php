@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Documents History') }}
+                История документов
             </h2>
             <a href="{{ route('pdf.index') }}" 
                class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                {{ __('+ New Document') }}
+                + Новый документ
             </a>
         </div>
     </x-slot>
@@ -62,20 +62,6 @@
                         <div class="ml-4">
                             <p class="text-sm text-gray-600">В процессе</p>
                             <p class="text-2xl font-bold">{{ $documents->whereNull('signed_pdf_path')->count() }}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 bg-purple-100 p-3 rounded-lg">
-                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm text-gray-600">Скачано</p>
-                            <p class="text-2xl font-bold">0</p>
                         </div>
                     </div>
                 </div>
